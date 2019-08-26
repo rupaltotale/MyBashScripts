@@ -1,0 +1,10 @@
+#!/bin/bash
+numScreenShots="$(ls -1 //Users/rtotale/Desktop/Screen\ Shot* 2>/dev/null | wc -l)"
+if [${numScreenShots} -gt 0 ];
+then
+   echo "Removing ${numScreenShots} Screen Shots..."
+   rm //Users/rtotale/Desktop/Screen\ Shot*
+   echo "Finished removing"
+else
+   echo "No Screen Shots to remove"
+fi
