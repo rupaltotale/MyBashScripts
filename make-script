@@ -29,7 +29,7 @@ if [ "$1" != "" ]; then
       echo "Script $1 already exists"
    else
       echo "Making script $1..."
-      cat starterTemplate.sh > ~/bin/$1
+      cat ~/bin/starterTemplate.sh > ~/bin/$1
       echo "Providing permissions to script $1"
       chmod u+x ~/bin/$1
       if [ $edit == 1 ]; then
