@@ -1,0 +1,10 @@
+To create and switch into a new branch:         git checkout -b <branchName>
+To switch to an existing branch:                git checkout <branchName>
+To list all branches:                           git branch [-a list all remote branches]
+To delete a branch:                             git branch [-d delete| -D force-delete ] <branchName>
+To merge exisiting branch into a another:       git merge <branchToMergeWith>
+To reset file to last commit:                   git checkout <fileName>
+To undo git add:                                git reset
+To undo push for PR:                            git push -f origin HEAD
+To see a git branch timeline view:              git lg
+
