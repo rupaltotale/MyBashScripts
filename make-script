@@ -1,15 +1,20 @@
 #!/bin/bash
 usage()
 {
-   echo "Usage: make-script <script name>"
+   echo "Usage: make-script <script name> [-f | --force] [-e | --edit]"
 }
 edit=0
 PARAMS=""
+forceMake=0
 while [ "$1" != "" ]; do
    case $1 in
       -e|--edit)  
          shift
          edit=1
+         ;;
+      -f|--force)  
+         shift
+         forceMake=1
          ;;
       *)            
          PARAMS="$PARAMS $1"
@@ -20,11 +25,11 @@ done
 eval set -- "$PARAMS"
 
 if [ "$1" != "" ]; then
-   if [ -f ~/bin/$1 ]; then
+   if [ -f ~/bin/$1 ] && [ $forceMake -eq 0 ]; then
       echo "Script $1 already exists"
    else
       echo "Making script $1..."
-      echo "#!/bin/bash" >  ~/bin/$1
+      cat starterTemplate.sh > ~/bin/$1
       echo "Providing permissions to script $1"
       chmod u+x ~/bin/$1
       if [ $edit == 1 ]; then

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() {
-   echo "Usage: gitdo [[-a add ] <filesToAdd> ] [[-m message ] <commitMessage> ] [[-p push ] baseBranch ]"
+   echo "Usage: " #TODO: Complete this out
 }
 
 # Parse flags
@@ -37,6 +37,3 @@ done
 eval set -- "$PARAMS" # Reset parameters to all previous arguments except valid flag options
 
 # Main code below
-eval "git add $add"
-eval "git commit -m\"$message\""
-eval "git push $pushTo HEAD"
