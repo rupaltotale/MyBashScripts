@@ -7,7 +7,7 @@ usage() {
 # Parse flags
 add="."
 message="quick fix"
-pushTo="HEAD"
+pushTo="origin"
 PARAMS=""
 
 while [ "$1" != "" ]; do
