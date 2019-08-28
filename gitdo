@@ -6,7 +6,7 @@ usage() {
 
 # Parse flags
 add="."
-message="quick fix"
+message="placeholder commit message"
 pushTo="origin"
 PARAMS=""
 
