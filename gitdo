@@ -6,7 +6,7 @@ usage() {
 
 # Parse flags
 add="."
-message="placeholder commit message"
+message="'placeholder commit message'"
 pushTo="origin"
 PARAMS=""
 
@@ -18,6 +18,7 @@ while [ "$1" != "" ]; do
          ;;
       -m|--message) # Check for a flag option   
          $message=$2 # Action to take if flag is present
+         echo $message
          shift 2
          ;;
       -a|--add)  # Check for another flag option
@@ -38,5 +39,5 @@ eval set -- "$PARAMS" # Reset parameters to all previous arguments except valid 
 
 # Main code below
 eval "git add $add"
-eval "git commit -m\"$message\""
+eval "git commit -m$message"
 eval "git push $pushTo HEAD"
