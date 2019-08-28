@@ -1,0 +1,37 @@
+#!/bin/bash
+usage()
+{
+   echo "Usage: make-script <script name>"
+}
+edit=0
+PARAMS=""
+while [ "$1" != "" ]; do
+   case $1 in
+      -e|--edit)  
+         shift
+         edit=1
+         ;;
+      *)            
+         PARAMS="$PARAMS $1"
+         shift
+         ;;
+   esac
+done
+eval set -- "$PARAMS"
+
+if [ "$1" != "" ]; then
+   if [ -f ~/bin/$1 ]; then
+      echo "Script $1 already exists"
+   else
+      echo "Making script $1..."
+      echo "#!/bin/bash" >  ~/bin/$1
+      echo "Providing permissions to script $1"
+      chmod u+x ~/bin/$1
+      if [ $edit == 1 ]; then
+         vim ~/bin/$1
+      fi
+   fi
+else
+   usage
+fi
+
