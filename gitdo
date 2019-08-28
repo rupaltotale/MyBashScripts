@@ -17,20 +17,19 @@ while [ "$1" != "" ]; do
          exit 0
          ;;
       -m|--message) # Check for a flag option   
-         $message=$2 # Action to take if flag is present
-         echo $message
+         message=$2 # Action to take if flag is present
          shift 2
          ;;
       -a|--add)  # Check for another flag option
-         $add=$2 # Action to take if this flag is present
+         add=$2 # Action to take if this flag is present
          shift 2
          ;;
       -p|--push)  # Check for another flag option
-         $pushTo=$2 # Action to take if this flag is present
+         pushTo=$2 # Action to take if this flag is present
          shift 2
          ;;
       *) # All other paramenter
-         $PARAMS="$PARAMS $1" # Store other arguments
+         PARAMS="$PARAMS $1" # Store other arguments
          shift
          ;;
    esac
@@ -39,5 +38,5 @@ eval set -- "$PARAMS" # Reset parameters to all previous arguments except valid 
 
 # Main code below
 eval "git add $add"
-eval "git commit -m$message"
+eval "git commit -m\"$message\""
 eval "git push $pushTo HEAD"

@@ -6,8 +6,8 @@ usage() {
 
 # Parse flags
 add="."
-message="quick fix"
-pushTo="HEAD"
+message="'placeholder commit message'"
+pushTo="origin"
 PARAMS=""
 
 while [ "$1" != "" ]; do
@@ -17,23 +17,21 @@ while [ "$1" != "" ]; do
          exit 0
          ;;
       -m|--message) # Check for a flag option   
-         $message=$2 # Action to take if flag is present
+         message=$2 # Action to take if flag is present
          shift 2
          ;;
       -a|--add)  # Check for another flag option
-         $add=$2 # Action to take if this flag is present
+         add=$2 # Action to take if this flag is present
          shift 2
          ;;
       -p|--push)  # Check for another flag option
-         $pushTo=$2 # Action to take if this flag is present
+         pushTo=$2 # Action to take if this flag is present
          shift 2
          ;;
       *) # All other paramenter
-         $PARAMS="$PARAMS $1" # Store other arguments
+         PARAMS="$PARAMS $1" # Store other arguments
          shift
          ;;
    esac
 done
-eval set -- "$PARAMS" # Reset parameters to all previous arguments except valid flag options
-
 # Main code below
