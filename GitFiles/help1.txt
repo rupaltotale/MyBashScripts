@@ -2,6 +2,10 @@ To create and switch into a new branch:         git checkout -b <branchName>
 To switch to an existing branch:                git checkout <branchName>
 To list all branches:                           git branch [-a list all remote branches]
 To delete a branch:                             git branch [-d delete| -D force-delete ] <branchName>
+To merge <newBranch> into master:               git checkout master && git merge <newBranch>
+To see the last commit on each branch:          git branch -v
+To see branches merged with HEAD:               git branch --merged | git branch --no-merged master 
+To see branches not merged with HEAD:           git branch --no-merged
 To merge exisiting branch into a another:       git merge <branchToMergeWith>
 To reset file to last commit:                   git checkout <fileName>
 To undo git add:                                git reset
