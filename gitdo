@@ -37,9 +37,9 @@ done
 eval set -- "$PARAMS" # Reset parameters to all previous arguments except valid flag options
 
 # Main code below
-echo "\n===> Adding $add"
+printf "\n===> Adding $add"
 eval "git add $add"
-echo "\n===> Commiting with message $message"
+printf "\n===> Commiting with message $message"
 eval "git commit -m\"$message\""
-echo "\n===> Pushing to $pushTo"
+printf "\n===> Pushing to $pushTo"
 eval "git push $pushTo HEAD"
