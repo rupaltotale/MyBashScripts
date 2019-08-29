@@ -38,8 +38,10 @@ eval set -- "$PARAMS" # Reset parameters to all previous arguments except valid 
 
 # Main code below
 printf "\n===> Adding $add\n"
-eval "git add $add"
+git add $add
 printf "\n===> Commiting with message $message\n"
-eval "git commit -m\"$message\""
+git commit -m"$message"
 printf "\n===> Pushing to $pushTo\n"
-eval "git push $pushTo HEAD"
+git push $pushTo HEAD
+exit 0
+

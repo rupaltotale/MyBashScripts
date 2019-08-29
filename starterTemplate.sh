@@ -35,3 +35,4 @@ while [ "$1" != "" ]; do
    esac
 done
 # Main code below
+exit 0
