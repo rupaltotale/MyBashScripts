@@ -38,10 +38,16 @@ eval set -- "$PARAMS" # Reset parameters to all previous arguments except valid 
 
 # Main code below
 printf "\n===> Adding $add\n"
-git add $add
+if ! git add $add; then
+   exit 1
+fi
 printf "\n===> Commiting with message $message\n"
-git commit -m"$message"
+if ! git commit -m"$message"; then
+   exit 1
+fi
 printf "\n===> Pushing to $pushTo\n"
-git push $pushTo HEAD
+if ! git push $pushTo HEAD; then
+   exit 1
+fi
 exit 0
 
