@@ -41,7 +41,7 @@ printf "\n===> Adding $add\n"
 if ! git add $add; then
    exit 1
 fi
-printf "\n===> Commiting with message $message\n"
+printf "\n===> Commiting with message \"$message\"\n"
 if ! git commit -m"$message"; then
    exit 1
 fi
