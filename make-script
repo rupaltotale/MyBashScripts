@@ -6,6 +6,7 @@ usage()
 edit=0
 PARAMS=""
 forceMake=0
+sourceIt=0
 while [ "$1" != "" ]; do
    case $1 in
       -e|--edit)  
@@ -15,6 +16,10 @@ while [ "$1" != "" ]; do
       -f|--force)  
          shift
          forceMake=1
+         ;;
+      -s|--source)  
+         shift
+         sourceIt=1
          ;;
       *)            
          PARAMS="$PARAMS $1"
@@ -32,6 +37,10 @@ if [ "$1" != "" ]; then
       cat ~/bin/starterTemplate.sh > ~/bin/$1
       echo "Providing permissions to script $1"
       chmod u+x ~/bin/$1
+      if [ $sourceIt ]; then
+         echo "Adding to sourceFiles.sh"
+         echo source ~/bin/$1 >> sourceFiles.sh
+      fi
       if [ $edit == 1 ]; then
          vim ~/bin/$1
       fi
