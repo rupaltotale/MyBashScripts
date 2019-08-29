@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() {
-   echo "Usage: " #TODO: Complete this out
+   echo -e "Usage: \n" #TODO: Complete this out
 }
 
 # Parse flags
