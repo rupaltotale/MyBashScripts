@@ -38,7 +38,7 @@ eval set -- "$PARAMS" # Reset parameters to all previous arguments except valid 
 
 # Main code below
 printf "\n===> Adding $add\n"
-if ! git add $add; then
+if ! git add "$add"; then
    exit 1
 fi
 printf "\n===> Commiting with message \"$message\"\n"
