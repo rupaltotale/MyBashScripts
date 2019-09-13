@@ -1,0 +1,6 @@
+#!/bin/bash
+watchman watch-del-all
+rm -rf node_modules && npm install
+killall -9 node
+npm start -- --reset-cache
+rm -rf /tmp/haste-map-react-native-packager-*
