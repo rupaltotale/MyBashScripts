@@ -1,0 +1,44 @@
+#!/bin/bash
+
+usage() {
+   echo -e "Usage: \n" #TODO: Complete this out
+}
+
+# Parse flags
+key=""
+action="showChat"
+PARAMS=""
+
+while [ "$1" != "" ]; do
+   case $1 in
+      -h|--help) # If help is asked, print usage and exit
+         usage
+         exit 0
+         ;;
+      -k|--key) # Check for a flag option   
+         key=$2 # Action to take if flag is present
+         shift 2
+         ;;
+      -a|--action) # Check for a flag option   
+         action=$2 # Action to take if flag is present
+         shift 2
+         ;;
+      *) # All other paramenter
+         PARAMS="$PARAMS $1" # Store other arguments
+         shift
+         ;;
+   esac
+done
+# Main code below
+curl -X POST https://fcm.googleapis.com/fcm/send -H 'Accept: */*' -H 'Authorization: key=AIzaSyCK_JLptpM9CcCtpifxDYeAWjs3LozK1Q8' -H 'Content-Type:application/json' -d '{
+    "to": "'$key'",
+    "data": {
+        "deepLinkUrl":
+        "skillz.gamelinks.com.skillz.android.shellgame.titanium://skillz.com/?link='$action'",
+        "sender": "skillz",
+        "gameId": "3382",
+        "title": "title",
+        "message": "message"
+    }
+}'
+exit 0

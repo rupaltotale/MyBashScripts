@@ -16,6 +16,11 @@ while [ "$1" != "" ]; do
          shift
          forceMake=1
          ;;
+      -h|--help)  
+         shift
+         usage
+         exit 0
+         ;;
       *)            
          PARAMS="$PARAMS $1"
          shift
