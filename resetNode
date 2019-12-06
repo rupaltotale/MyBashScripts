@@ -1,6 +1,11 @@
 #!/bin/bash
+echo "===> Killing watchman"
 watchman watch-del-all
+echo "===> Removing node modules and re-installing"
 rm -rf node_modules && npm install
+echo "===> Killing all node processes"
 killall -9 node
+echo "===> Resetting cache"
 npm start -- --reset-cache
+echo "===> Removing haste map"
 rm -rf /tmp/haste-map-react-native-packager-*

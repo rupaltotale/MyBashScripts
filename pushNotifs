@@ -34,7 +34,7 @@ curl -X POST https://fcm.googleapis.com/fcm/send -H 'Accept: */*' -H 'Authorizat
     "to": "'$key'",
     "data": {
         "deepLinkUrl":
-        "skillz.gamelinks.com.skillz.android.shellgame.titanium://skillz.com/?link='$action'",
+        "skillz.gamelinks.com.skillz.android.shellgame.neon://skillz.com/?link='$action'",
         "sender": "skillz",
         "gameId": "3382",
         "title": "title",

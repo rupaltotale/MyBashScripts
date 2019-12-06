@@ -42,4 +42,6 @@ echo "===> checking out master"
 git checkout master
 echo "===> deleting branch: $branchName"
 git branch -D $branchName
+echo "===> Pulling latest changes..."
+git pull
 exit 0

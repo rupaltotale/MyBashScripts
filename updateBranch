@@ -1,0 +1,41 @@
+#!/bin/bash
+
+usage() {
+   echo -e "Usage: \n" #TODO: Complete this out
+}
+
+# Parse flags
+updateBranch="master"
+PARAMS=""
+
+while [ "$1" != "" ]; do
+   case $1 in
+      -h|--help) # If help is asked, print usage and exit
+         usage
+         exit 0
+         ;;
+      -u|--updateBranch) # Check for a flag option   
+         updateBranch=$2 # Action to take if flag is present
+         shift 2
+         ;;
+      *) # All other paramenter
+         PARAMS="$PARAMS $1" # Store other arguments
+         shift
+         ;;
+   esac
+done
+# Main code below
+currentBranch="$(git branch | grep \* | cut -d ' ' -f2)"
+echo "===> On branch: ${currentBranch}"
+echo -e "\n===> Checking out $updateBranch"
+git checkout $updateBranch
+echo -e "\n===> Pulling latest changes"
+git pull
+echo -e "\n===> Checking out previous branch"
+git checkout ${currentBranch}
+echo -e "\n===> Merging latest changes"
+git merge $updateBranch
+echo -e "\n===> Pushing merged code"
+git push -f origin HEAD
+
+exit 0
