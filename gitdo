@@ -9,6 +9,7 @@ add="."
 message="'placeholder commit message'"
 pushTo="origin"
 PARAMS=""
+forceUpdate=false
 
 while [ "$1" != "" ]; do
    case $1 in
@@ -28,6 +29,10 @@ while [ "$1" != "" ]; do
          pushTo=$2 # Action to take if this flag is present
          shift 2
          ;;
+      -f|--force)  # Check for another flag option
+         forceUpdate=true
+         shift 1
+         ;;
       *) # All other paramenter
          PARAMS="$PARAMS $1" # Store other arguments
          shift
@@ -44,6 +49,13 @@ fi
 printf "\n===> Commiting with message \"$message\"\n"
 if ! git commit -m"$message"; then
    exit 1
+fi
+if [ "$forceUpdate" = true ]; then
+   printf "\n===> FORCE PUSHING TO $pushTo\n"
+   if ! git push -f $pushTo HEAD; then
+      exit 1
+   fi
+   exit 0
 fi
 printf "\n===> Pushing to $pushTo\n"
 if ! git push $pushTo HEAD; then
